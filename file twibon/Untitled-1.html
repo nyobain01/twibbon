@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Twibbon Sekolah Ceria!</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+</head>
+<body>
+    <div class="twibbon-wrapper">
+        <header class="main-header">
+            <h1>Yuk, Ramaikan Semangat Sekolah Kita!</h1>
+            <p>Unggah fotomu dan sesuaikan posisinya!</p>
+        </header>
+
+        <div class="twibbon-container" id="twibbonContainer">
+            <div class="twibbon-frame">
+                <img src="mpls ma (1).png" alt="Bingkai Twibbon Sekolah" class="frame-image">
+            </div>
+            <div class="user-image-area" id="userImageArea">
+                <img id="userPhoto" src="assets/placeholder-siswa.jpg" alt="Foto Siswa" class="user-image">
+            </div>
+        </div>
+
+        <div class="actions-container">
+            <input type="file" id="fileInput" accept="image/*" style="display: none;">
+
+            <label for="fileInput" class="upload-button">
+                <span class="button-icon">&#x1F4F7;</span> Pilih Fotomu!
+            </label>
+
+            <div class="photo-controls" style="display: none;">
+                <div class="control-group">
+                    <button id="zoomIn" class="control-button">&#x2795; Zoom In</button>
+                    <button id="zoomOut" class="control-button">&#x2796; Zoom Out</button>
+                </div>
+                <div class="control-group">
+                    <button id="moveUp" class="control-button">&#x2191; Up</button>
+                    <button id="moveLeft" class="control-button">&#x2190; Left</button>
+                    <button id="moveRight" class="control-button">&#x2192; Right</button>
+                    <button id="moveDown" class="control-button">&#x2193; Down</button>
+                </div>
+            </div>
+
+            <button id="downloadButton" class="download-button" style="display: none;">
+                <span class="button-icon">&#x1F4BD;</span> Unduh Twibbonmu!
+            </button>
+            
+            <p class="instructions">
+                1. Klik "Pilih Fotomu!"<br>
+                2. Gunakan tombol di bawah untuk mengatur posisi dan ukuran fotomu.<br>
+                3. Klik "Unduh Twibbonmu!"
+            </p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
