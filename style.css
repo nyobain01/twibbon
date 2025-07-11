@@ -1,0 +1,228 @@
+/* Styling Umum */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background-color: #f0f2f5;
+    font-family: 'Poppins', sans-serif;
+    color: #333;
+    line-height: 1.6;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.twibbon-wrapper {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 450px;
+    width: 100%;
+}
+
+.main-header {
+    margin-bottom: 25px;
+}
+
+.main-header h1 {
+    color: #007bff;
+    font-size: 2.2em;
+    margin-bottom: 10px;
+}
+
+.main-header p {
+    font-size: 1em;
+    color: #555;
+}
+
+/* Twibbon Container */
+.twibbon-container {
+    position: relative;
+    width: 350px; /* Ukuran persegi twibbon */
+    height: 350px;
+    margin: 0 auto 30px auto;
+    overflow: hidden; /* Penting! Ini akan menyembunyikan bagian foto yang keluar dari area */
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    background-color: #e0e0e0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.twibbon-frame {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2; /* Bingkai di atas foto */
+    pointer-events: none; /* Penting agar elemen di bawahnya bisa diakses/diklik */
+}
+
+.frame-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+.user-image-area {
+    position: absolute;
+    /* Sesuaikan ukuran dan posisi ini agar pas dengan lubang di bingkai Anda */
+    width: 85%; /* Contoh: 85% dari lebar twibbon-container */
+    height: 85%; /* Contoh: 85% dari tinggi twibbon-container */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Untuk memposisikan tepat di tengah */
+
+    overflow: hidden; /* Pastikan overflow tetap hidden */
+    z-index: 1; /* Foto pengguna di bawah bingkai */
+    /* border-radius: 10px; */ /* Hanya jika lubang bingkai Anda memiliki sudut membulat */
+}
+
+.user-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Awalnya cover untuk mengisi, nanti JS yang mengatur transform */
+    display: block;
+    transform-origin: center center; /* Penting untuk zoom agar di tengah */
+    transition: transform 0.05s ease-out; /* Animasi halus saat menggeser/zoom */
+}
+
+
+/* Container untuk Aksi (Tombol Unggah, Download & Instruksi) */
+.actions-container {
+    margin-top: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+/* Styling Tombol Umum (Untuk Unggah dan Unduh) */
+.upload-button,
+.download-button {
+    background-color: #28a745;
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: 600;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+}
+
+.download-button {
+    background-color: #007bff;
+}
+
+.upload-button:hover {
+    background-color: #218838;
+    transform: translateY(-2px);
+}
+
+.download-button:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}
+
+.button-icon {
+    font-size: 1.3em;
+}
+
+/* Kontrol Foto (Zoom & Pindah) */
+.photo-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+    background-color: #f8f9fa;
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px solid #dee2e6;
+    width: 80%; /* Sesuaikan lebar */
+    max-width: 350px;
+}
+
+.control-group {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.control-button {
+    background-color: #6c757d; /* Warna abu-abu default */
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9em;
+    font-weight: 600;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    flex-grow: 1; /* Agar tombol mengisi ruang */
+}
+
+.control-button:hover {
+    background-color: #5a6268;
+    transform: translateY(-1px);
+}
+
+/* Specific button styles for visual clarity */
+#zoomIn, #zoomOut {
+    background-color: #ffc107; /* Kuning */
+    color: #333;
+}
+#zoomIn:hover, #zoomOut:hover {
+    background-color: #e0a800;
+}
+
+.instructions {
+    font-size: 0.95em;
+    color: #666;
+    text-align: left;
+    background-color: #e9ecef;
+    padding: 15px;
+    border-radius: 10px;
+    width: 80%;
+    margin: 0 auto;
+}
+
+/* Responsif */
+@media (max-width: 600px) {
+    body {
+        padding: 15px;
+    }
+
+    .twibbon-wrapper {
+        padding: 20px;
+    }
+
+    .main-header h1 {
+        font-size: 1.8em;
+    }
+
+    .twibbon-container {
+        width: 300px;
+        height: 300px;
+    }
+    
+    .upload-button, .download-button {
+        padding: 10px 20px;
+        font-size: 1em;
+    }
+    
+    .instructions, .photo-controls {
+        width: 95%;
+    }
+}
